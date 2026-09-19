@@ -21,7 +21,7 @@ jobs:
       - run: npm run build:web
 
   windows-package:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
     runs-on: windows-latest
     needs: quality
     steps:

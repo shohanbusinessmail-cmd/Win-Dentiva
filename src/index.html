@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f8f8">
+  <meta name="description" content="Dentiva — premium local-first dental clinic management">
+  <title>Dentiva</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="app-shell" aria-live="polite">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><span></span><i></i></div>
+        <div class="brand-wordmark"><strong>DENTIVA</strong><small>CLINIC OS</small></div>
+      </div>
+      <div class="workspace-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon" data-icon="grid"></span><span data-i18n="dashboard">Dashboard</span></button>
+        <button class="nav-item" data-view="patients"><span class="nav-icon" data-icon="users"></span><span data-i18n="patients">Patients</span><kbd>⌘1</kbd></button>
+        <button class="nav-item" data-view="appointments"><span class="nav-icon" data-icon="calendar"></span><span data-i18n="appointments">Appointments</span><kbd>⌘2</kbd></button>
+        <button class="nav-item" data-view="queue"><span class="nav-icon" data-icon="queue"></span><span data-i18n="queue">Queue / Today</span><span class="nav-badge" id="queue-count">0</span></button>
+        <div class="nav-section" data-i18n="clinical">CLINICAL</div>
+        <button class="nav-item" data-view="clinical"><span class="nav-icon" data-icon="clipboard"></span><span data-i18n="clinicalRecords">Clinical records</span></button>
+        <button class="nav-item" data-view="prescriptions"><span class="nav-icon" data-icon="pill"></span><span data-i18n="prescriptions">Prescriptions</span></button>
+        <button class="nav-item" data-view="treatments"><span class="nav-icon" data-icon="tooth"></span><span data-i18n="treatments">Treatments</span></button>
+        <button class="nav-item" data-view="documents"><span class="nav-icon" data-icon="paperclip"></span><span data-i18n="documents">Documents</span></button>
+        <button class="nav-item" data-view="referrals"><span class="nav-icon" data-icon="share"></span><span data-i18n="referrals">Referrals</span></button>
+        <div class="nav-section" data-i18n="operations">OPERATIONS</div>
+        <button class="nav-item" data-view="billing"><span class="nav-icon" data-icon="receipt"></span><span data-i18n="billing">Invoices & payments</span></button>
+        <button class="nav-item" data-view="reports"><span class="nav-icon" data-icon="chart"></span><span data-i18n="reports">Reports</span></button>
+        <button class="nav-item" data-view="expenses"><span class="nav-icon" data-icon="wallet"></span><span data-i18n="expenses">Expenses</span></button>
+        <button class="nav-item" data-view="staff"><span class="nav-icon" data-icon="briefcase"></span><span data-i18n="staff">Staff</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="nav-item" data-view="settings"><span class="nav-icon" data-icon="settings"></span><span data-i18n="settings">Settings</span></button>
+        <button class="nav-item" data-view="backup"><span class="nav-icon" data-icon="shield"></span><span data-i18n="backup">Backup & restore</span></button>
+        <button class="nav-item" data-view="audit"><span class="nav-icon" data-icon="history"></span><span data-i18n="audit">Audit log</span></button>
+        <button class="nav-item" data-view="about"><span class="nav-icon" data-icon="info"></span><span data-i18n="about">About Dentiva</span></button>
+        <div class="sidebar-user" id="sidebar-user">
+          <div class="avatar" id="user-avatar">A</div><div class="user-meta"><strong id="user-name">Administrator</strong><small id="user-role">Clinic administrator</small></div><button class="icon-button ghost" id="lock-app" title="Lock application" aria-label="Lock application"><span data-icon="lock"></span></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><button class="icon-button menu-toggle" id="sidebar-toggle" aria-label="Toggle sidebar"><span data-icon="menu"></span></button><div class="breadcrumb"><span>DENTIVA</span><i>/</i><strong id="breadcrumb-current">Dashboard</strong></div></div>
+        <div class="topbar-actions"><button class="global-search" id="global-search"><span data-icon="search"></span><span data-i18n="searchAnything">Search anything</span><kbd>⌘ K</kbd></button><button class="icon-button notification-button" id="notification-button" title="Notifications" aria-label="Notifications"><span data-icon="bell"></span><em id="notification-dot"></em></button><div class="top-date" id="top-date"></div></div>
+      </header>
+      <div class="content-scroll" id="content-scroll"><div class="page-content" id="page-content"></div></div>
+    </main>
+  </div>
+
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card" id="modal-card"></div></div>
+
+  <div class="setup-screen" id="setup-screen" hidden>
+    <div class="setup-aside"><div class="brand-lockup large"><div class="brand-mark"><span></span><i></i></div><div class="brand-wordmark"><strong>DENTIVA</strong><small>CLINIC OS</small></div></div><div class="setup-aside-copy"><span class="eyebrow">A calmer way to care</span><h1>Build your clinic's<br><em>trusted home.</em></h1><p>Secure, local-first clinic operations with a beautifully considered workflow for every patient and every visit.</p></div><div class="setup-trust"><span data-icon="shield"></span><span>Your data stays on this device.</span></div></div>
+    <div class="setup-main"><div class="setup-progress"><span class="progress-label" id="setup-progress-label">Step 1 of 3</span><div class="progress-track"><i id="setup-progress-bar"></i></div></div><div class="setup-panel" id="setup-panel"></div><div class="setup-footer"><span class="setup-help">You can refine these details later in Settings.</span><div><button class="button quiet" id="setup-back" hidden>Back</button><button class="button primary" id="setup-next">Continue <span data-icon="arrow-right"></span></button></div></div></div>
+  </div>
+
+  <div class="lock-screen" id="lock-screen" hidden><div class="lock-card"><div class="brand-mark large-mark"><span></span><i></i></div><span class="eyebrow">DENTIVA</span><h2>Welcome back</h2><p id="lock-clinic">Unlock your clinic workspace to continue.</p><form id="unlock-form"><label>Password<input type="password" id="unlock-password" autocomplete="current-password" required></label><div class="form-error" id="unlock-error"></div><button class="button primary full" type="submit">Unlock workspace <span data-icon="arrow-right"></span></button></form><button class="text-button" id="switch-account">Sign in with another account</button></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
